@@ -49,6 +49,7 @@ func listDir(fromPath, toPath string) {
 			to := toPath + sep + strings.Join(arr[start:len(arr)-1], string(os.PathSeparator)) +
 				string(os.PathSeparator) + info.Name()
 
+			// TODO: If the file exists, do a md5 checksum to see if the file is diffrent
 			if yes, _ := exists(to + string(os.PathSeparator) + info.Name()); !yes {
 				if err := createDirAndCopy(from, to, info.Name()); err != nil {
 					fmt.Println("Copy error", err)
