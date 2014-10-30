@@ -55,9 +55,9 @@ func main() {
 
 	c := make(chan result)
 	var wg sync.WaitGroup
-	const numDigesters = 400
-	wg.Add(numDigesters)
-	for i := 0; i < numDigesters; i++ {
+
+	wg.Add(workers)
+	for i := 0; i < workers; i++ {
 		go func() {
 			digester(done, datac, c)
 			wg.Done()
