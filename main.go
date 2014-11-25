@@ -87,7 +87,7 @@ func main() {
 
 func digester(done <-chan struct{}, datac <-chan data, c chan<- result) {
 	for d := range datac {
-		var err error = nil
+		var err error
 		synced := false
 		// TODO: If the file exists, do a md5 checksum to see if the file is diffrent
 		if yes, _ := exists(d.to + string(os.PathSeparator) + d.filename); !yes {
