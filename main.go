@@ -90,12 +90,12 @@ func digester(done <-chan struct{}, datac <-chan data, c chan<- result) {
 		var err error
 		synced := false
 		// TODO: If the file exists, do a md5 checksum to see if the file is diffrent
-		if yes, _ := exists(d.to + string(os.PathSeparator) + d.filename); !yes {
-			err = createDirAndCopy(d.from, d.to, d.filename)
-			if err == nil {
-				synced = true
-			}
+		//if yes, _ := exists(d.to + string(os.PathSeparator) + d.filename); !yes {
+		err = createDirAndCopy(d.from, d.to, d.filename)
+		if err == nil {
+			synced = true
 		}
+		//}
 
 		select {
 		case c <- result{d, synced, err}:
